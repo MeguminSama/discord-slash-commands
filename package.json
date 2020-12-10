@@ -1,6 +1,6 @@
 {
   "name": "slash-commands",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/MeguminSama/node-slash-commands"

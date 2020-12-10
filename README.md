@@ -49,3 +49,7 @@ await interaction
   .then(console.log)
   .catch(console.error)
 ```
+
+## Contributing
+
+Help is much-needed to improve the library and add all features. Please feel free to make a PR to [the repository](https://github.com/MeguminSama/discord-slash-commands).
