@@ -1,4 +1,4 @@
-# node-slash-commands
+# discord-slash-commands
 
 Slash command support for the new Discord Interactions API.
 
