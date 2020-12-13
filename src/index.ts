@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import * as centra from "centra";
 import {
   ApplicationCommand,
   PartialApplicationCommand,
@@ -13,20 +13,18 @@ const makeEndpoint = (endpoint) => `${DISCORD_ENDPOINT}${endpoint}`;
 
 export * from "./structures";
 
-export class DiscordInteractions {
+export default class DiscordInteractions {
   private publicKey: snowflake;
   private applicationid: snowflake;
   private authToken: string;
   private tokenPrefix: string;
 
-  constructor(
-    opts: {
-      applicationId: snowflake;
-      publicKey: snowflake;
-      authToken: string;
-      tokenPrefix?: string;
-    },
-  ) {
+  constructor(opts: {
+    applicationId: snowflake;
+    publicKey: snowflake;
+    authToken: string;
+    tokenPrefix?: string;
+  }) {
     this.publicKey = opts.publicKey;
     this.applicationid = opts.applicationId;
     this.authToken = opts.authToken;
@@ -37,131 +35,58 @@ export class DiscordInteractions {
     return _verifySignature(this.publicKey, signature, timestamp, rawBody);
   };
 
-  getApplicationCommands = () => {
-    return fetch(makeEndpoint(`applications/${this.applicationid}/commands`), {
-      headers: {
-        "Authorization": `${this.tokenPrefix}${this.authToken}`,
-      },
-    })
-      .then((d) => d.json())
-      .then((d) => d as ApplicationCommand);
+  getApplicationCommands = async (guildId?: string) => {
+    const request = await centra(
+      makeEndpoint(
+        guildId
+          ? `applications/${this.applicationid}/guilds/${guildId}/commands`
+          : `applications/${this.applicationid}/commands`
+      )
+    )
+      .header("Authorization", `${this.tokenPrefix}${this.authToken}`)
+      .send();
+    return (await request.json()) as ApplicationCommand[];
   };
 
-  createApplicationCommand = (command: PartialApplicationCommand) => {
-    return fetch(makeEndpoint(`applications/${this.applicationid}/commands`), {
-      method: "POST",
-      body: JSON.stringify(command),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `${this.tokenPrefix}${this.authToken}`,
-      },
-    })
-      .then((d) => d.json())
-      .then((d) => d as ApplicationCommand);
-  };
-
-  editApplicationCommand = (
-    commandId: number,
+  createApplicationCommand = async (
     command: PartialApplicationCommand,
+    guildId?: string,
+    commandId?: string
   ) => {
-    return fetch(
-      makeEndpoint(`applications/${this.applicationid}/commands/${commandId}`),
-      {
-        method: "POST",
-        body: JSON.stringify(command),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `${this.tokenPrefix}${this.authToken}`,
-        },
-      },
-    )
-      .then((d) => d.json())
-      .then((d) => d as ApplicationCommand);
-  };
-
-  deleteApplicationCommand = (commandId: string) => {
-    return fetch(
-      makeEndpoint(`applications/${this.applicationid}/commands/${commandId}`),
-      {
-        method: "DELETE",
-        headers: {
-          "Authorization": `${this.tokenPrefix}${this.authToken}`,
-        },
-      },
-    );
-  };
-
-  getGuildCommands = (guildId: snowflake) => {
-    return fetch(
+    const suffix = commandId ? `/${commandId}` : "";
+    const request = await centra(
       makeEndpoint(
-        `applications/${this.applicationid}/guilds/${guildId}/commands`,
+        guildId
+          ? `applications/${this.applicationid}/guilds/${guildId}/commands${suffix}`
+          : `applications/${this.applicationid}/commands${suffix}`
       ),
-      {
-        headers: {
-          "Authorization": `${this.tokenPrefix}${this.authToken}`,
-        },
-      },
+      "POST"
     )
-      .then((d) => d.json())
-      .then((d) => d as ApplicationCommand);
+      .body(command, "json")
+      .header("Authorization", `${this.tokenPrefix}${this.authToken}`)
+      .send();
+    return (await request.json()) as ApplicationCommand;
   };
 
-  createGuildCommand = (
-    guildId: snowflake,
+  editApplicationCommand = async (
+    commandId: string,
     command: PartialApplicationCommand,
+    guildId?: string
   ) => {
-    return fetch(
-      makeEndpoint(
-        `applications/${this.applicationid}/guilds/${guildId}/commands`,
-      ),
-      {
-        method: "POST",
-        body: JSON.stringify(command),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `${this.tokenPrefix}${this.authToken}`,
-        },
-      },
-    )
-      .then((d) => d.json())
-      .then((d) => d as ApplicationCommand);
+    return await this.createApplicationCommand(command, guildId, commandId);
   };
 
-  editGuildCommand = (
-    guildId: snowflake,
-    commandId: number,
-    command: PartialApplicationCommand,
-  ) => {
-    return fetch(
+  deleteApplicationCommand = async (commandId: string, guildId?: string) => {
+    const request = await centra(
       makeEndpoint(
-        `applications/${this.applicationid}/guilds/${guildId}/commands/${commandId}`,
+        guildId
+          ? `applications/${this.applicationid}/guilds/${guildId}/commands/${commandId}`
+          : `applications/${this.applicationid}/commands/${commandId}`
       ),
-      {
-        method: "POST",
-        body: JSON.stringify(command),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `${this.tokenPrefix}${this.authToken}`,
-        },
-      },
+      "DELETE"
     )
-      .then((d) => d.json())
-      .then((d) => d as ApplicationCommand);
-  };
-
-  deleteGuildCommand = (guildId: snowflake, commandId: string) => {
-    return fetch(
-      makeEndpoint(
-        `applications/${this.applicationid}/guilds/${guildId}/commands/${commandId}`,
-      ),
-      {
-        method: "DELETE",
-        headers: {
-          "Authorization": `${this.tokenPrefix}${this.authToken}`,
-        },
-      },
-    );
+      .header("Authorization", `${this.tokenPrefix}${this.authToken}`)
+      .send();
+    return request.statusCode == 204;
   };
 }
-
-export default DiscordInteractions;
