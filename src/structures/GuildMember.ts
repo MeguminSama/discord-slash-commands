@@ -7,6 +7,6 @@ export type GuildMember = {
   roles: snowflake[];
   joinedAt: Date;
   premiumSince?: Date;
-  dead?: boolean;
+  deaf?: boolean;
   mute?: boolean;
 };

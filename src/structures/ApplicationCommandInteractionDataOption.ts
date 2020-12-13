@@ -1,7 +1,13 @@
 import { ApplicationCommandOptionType } from "./ApplicationCommandOptions";
 
-export type ApplicationCommandInteractionDataOption = {
+type ValueData = {
   name: string;
-  value?: ApplicationCommandOptionType;
-  options?: ApplicationCommandInteractionDataOption;
-};
+  value: ApplicationCommandOptionType;
+}
+
+type NestedData = {
+  name: string;
+  options: ApplicationCommandInteractionDataOption[];
+}
+
+export type ApplicationCommandInteractionDataOption = ValueData | NestedData;

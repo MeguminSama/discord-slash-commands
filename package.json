@@ -1,6 +1,6 @@
 {
   "name": "slash-commands",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/MeguminSama/node-slash-commands"
@@ -10,7 +10,6 @@
     "email": "megumin@megu.dev",
     "url": "https://github.com/MeguminSama"
   },
-  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc --build tsconfig.json",
