@@ -11,7 +11,7 @@ type ApplicationCommand = {
   channelId: snowflake;
   member: GuildMember;
   token: string;
-}
+};
 
 export type Interaction = ApplicationCommand | {
   id: snowflake;

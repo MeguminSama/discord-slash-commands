@@ -2,13 +2,16 @@ import fetch from "node-fetch";
 import {
   ApplicationCommand,
   PartialApplicationCommand,
-} from "./structures/ApplicationCommand";
-import { snowflake } from "./structures/Snowflake";
+  snowflake,
+} from "./structures";
+
 import { verifySignature as _verifySignature } from "./utils";
 
 const DISCORD_ENDPOINT = "https://discord.com/api/v8/";
 
 const makeEndpoint = (endpoint) => `${DISCORD_ENDPOINT}${endpoint}`;
+
+export * from "./structures";
 
 export class DiscordInteractions {
   private publicKey: snowflake;
