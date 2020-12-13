@@ -1,15 +1,20 @@
 {
   "name": "slash-commands",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MeguminSama/node-slash-commands"
+    "url": "https://github.com/MeguminSama/discord-slash-commands"
   },
   "author": {
     "name": "Rie Takahashi",
     "email": "megumin@megu.dev",
     "url": "https://github.com/MeguminSama"
   },
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "prepare": "yarn run build",
   "license": "MIT",
   "scripts": {
     "build": "tsc --build tsconfig.json",
