@@ -15,6 +15,12 @@
     "dist/**/*"
   ],
   "prepare": "yarn run build",
+  "keywords": [
+    "discord",
+    "slash-commands",
+    "interactions",
+    "discord-interactions"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsc --build tsconfig.json",
