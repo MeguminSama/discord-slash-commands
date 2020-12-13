@@ -1,0 +1,23 @@
+name: Publish
+
+on:
+  release:
+    types: [publish]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.3
+        with:
+          node-version: 14
+
+      - name: Build
+        run: yarn build
+      
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
