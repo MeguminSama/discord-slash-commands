@@ -2,7 +2,7 @@ name: Publish
 
 on:
   release:
-    types: [publish]
+    types: [published]
 
 jobs:
   publish:
@@ -13,6 +13,10 @@ jobs:
       - uses: actions/setup-node@v2.1.3
         with:
           node-version: 14
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install
+        run: yarn install
 
       - name: Build
         run: yarn build
