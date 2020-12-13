@@ -1,16 +1,14 @@
-import * as ed from "noble-ed25519";
+import { sign } from "tweetnacl";
 
 export const verifySignature = async (
   publicKey: string,
   signature: string,
   timestamp: string,
-  rawBody: string,
+  rawBody: string
 ): Promise<boolean> => {
-  return ed.verify(
-    signature,
-    Buffer.concat(
-      [Buffer.from(timestamp, "utf-8"), Buffer.from(rawBody, "utf-8")],
-    ),
-    publicKey,
+  return sign.detached.verify(
+    Buffer.from(timestamp + rawBody),
+    Buffer.from(signature, "hex"),
+    Buffer.from(publicKey, "hex")
   );
 };
