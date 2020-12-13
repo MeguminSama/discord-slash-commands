@@ -13,7 +13,7 @@ const makeEndpoint = (endpoint) => `${DISCORD_ENDPOINT}${endpoint}`;
 
 export * from "./structures";
 
-export default class DiscordInteractions {
+export class DiscordInteractions {
   private publicKey: snowflake;
   private applicationid: snowflake;
   private authToken: string;
@@ -90,3 +90,4 @@ export default class DiscordInteractions {
     return request.statusCode == 204;
   };
 }
+export default DiscordInteractions;

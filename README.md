@@ -15,7 +15,7 @@ import { DiscordInteractions } from "slash-commands";
 or
 
 ```js
-const Interactions = require("slash-commands").default;
+const { DiscordInteractions } = require("slash-commands");
 ```
 
 ## Initialization
