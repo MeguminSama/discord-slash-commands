@@ -54,13 +54,14 @@ export class DiscordInteractions {
     commandId?: string
   ) => {
     const suffix = commandId ? `/${commandId}` : "";
+    const method = commandId ? "PATCH" : "POST";
     const request = await centra(
       makeEndpoint(
         guildId
           ? `applications/${this.applicationid}/guilds/${guildId}/commands${suffix}`
           : `applications/${this.applicationid}/commands${suffix}`
       ),
-      "POST"
+      method
     )
       .body(command, "json")
       .header("Authorization", `${this.tokenPrefix}${this.authToken}`)
