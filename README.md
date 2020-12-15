@@ -1,6 +1,8 @@
 # discord-slash-commands
 
-![npm](https://img.shields.io/npm/v/slash-commands?color=red) ![npm bundle size](https://img.shields.io/bundlephobia/min/slash-commands) ![npm downloads](https://img.shields.io/npm/dt/slash-commands?color=blue)
+[![npm](https://img.shields.io/npm/v/slash-commands?color=red)](https://www.npmjs.com/package/slash-commands)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/slash-commands)](https://www.npmjs.com/package/slash-commands)
+[![npm downloads](https://img.shields.io/npm/dt/slash-commands?color=blue)](https://www.npmjs.com/package/slash-commands)
 
 This package provides Slash command support for the new Discord Interactions API.
 
