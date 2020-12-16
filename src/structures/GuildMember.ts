@@ -2,7 +2,8 @@ import { snowflake } from "./Snowflake";
 import { User } from "./User";
 
 export type GuildMember = {
-  user?: User;
+  // https://github.com/discord/discord-api-docs/pull/2295#discussion_r543021673
+  user: User;
   nick?: string;
   roles: snowflake[];
   joinedAt: Date;

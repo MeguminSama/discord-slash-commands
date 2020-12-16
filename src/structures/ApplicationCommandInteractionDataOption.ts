@@ -1,8 +1,8 @@
-import { ApplicationCommandOptionType } from "./ApplicationCommandOptions";
+import { ApplicationCommandOptionValue } from "./ApplicationCommandOptions";
 
 type ValueData = {
   name: string;
-  value: ApplicationCommandOptionType;
+  value: ApplicationCommandOptionValue;
 };
 
 type NestedData = {
