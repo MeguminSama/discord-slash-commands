@@ -10,6 +10,8 @@ export type ApplicationCommandOption = {
   options?: ApplicationCommandOption[];
 };
 
+export type ApplicationCommandOptionValue = string | number | boolean;
+
 export enum ApplicationCommandOptionType {
   SUB_COMMAND = 1,
   SUB_COMMAND_GROUP = 2,
