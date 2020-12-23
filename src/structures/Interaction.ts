@@ -17,8 +17,8 @@ export type Interaction = ApplicationCommand | {
   id: snowflake;
   type: Exclude<InteractionType, InteractionType.APPLICATION_COMMAND>;
   data?: ApplicationCommandInteractionData;
-  guildId: snowflake;
-  channelId: snowflake;
+  guild_id: snowflake;
+  channel_id: snowflake;
   member: GuildMember;
   token: string;
 };
