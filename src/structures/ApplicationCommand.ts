@@ -3,7 +3,7 @@ import { snowflake } from "./Snowflake";
 
 export type ApplicationCommand = {
   id: snowflake;
-  applicationId: snowflake;
+  application_id: snowflake;
   name: string;
   description: string;
   options: ApplicationCommandOption[];
