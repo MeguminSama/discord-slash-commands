@@ -12,6 +12,7 @@ const DISCORD_ENDPOINT = "https://discord.com/api/v8/";
 const makeEndpoint = (endpoint) => `${DISCORD_ENDPOINT}${endpoint}`;
 
 export * from "./structures";
+export * from "./builders";
 
 export class DiscordInteractions {
   private publicKey: snowflake;
