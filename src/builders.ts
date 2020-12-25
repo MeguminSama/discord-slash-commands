@@ -14,6 +14,7 @@ export class CommandBuilder {
     if (name.length < 3 || name.length > 32) {
       throw new Error("Command names must be between 3 and 32 characters");
     }
+    this.options = [];
     this.name = name;
     return this;
   }
