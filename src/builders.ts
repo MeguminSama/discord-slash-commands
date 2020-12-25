@@ -10,11 +10,14 @@ export class CommandBuilder {
   private description: string;
   private options: ApplicationCommandOption[];
 
+  constructor() {
+    this.options = [];
+  }
+
   public setName(name: string): CommandBuilder {
     if (name.length < 3 || name.length > 32) {
       throw new Error("Command names must be between 3 and 32 characters");
     }
-    this.options = [];
     this.name = name;
     return this;
   }
@@ -50,6 +53,10 @@ export class SubcommandBuilder {
   default?: boolean;
   required?: boolean;
   options: ApplicationCommandOption[];
+
+  constructor() {
+    this.options = [];
+  }
 
   public setName(name: string): SubcommandBuilder {
     if (name.length < 3 || name.length > 32) {
@@ -108,6 +115,10 @@ export class SubcommandGroupBuilder {
   required?: boolean;
   options: ApplicationCommandOption[];
 
+  constructor() {
+    this.options = [];
+  }
+
   public setName(name: string): SubcommandGroupBuilder {
     if (name.length < 3 || name.length > 32) {
       throw new Error("Group names must be between 3 and 32 characters");
@@ -158,6 +169,10 @@ export class ApplicationCommandOptionBuilder {
   default?: boolean;
   required?: boolean;
   choices?: ApplicationCommandOptionChoice[];
+
+  constructor() {
+    this.choices = [];
+  }
 
   public setType(
     type: ApplicationCommandOptionType
