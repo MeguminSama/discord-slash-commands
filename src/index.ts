@@ -2,7 +2,7 @@ import * as centra from "centra";
 import {
   ApplicationCommand,
   PartialApplicationCommand,
-  snowflake,
+  Snowflake,
 } from "./structures";
 
 import { verifySignature as _verifySignature } from "./utils";
@@ -15,14 +15,14 @@ export * from "./structures";
 export * from "./builders";
 
 export class DiscordInteractions {
-  private publicKey: snowflake;
-  private applicationid: snowflake;
+  private publicKey: Snowflake;
+  private applicationid: Snowflake;
   private authToken: string;
   private tokenPrefix: string;
 
   constructor(opts: {
-    applicationId: snowflake;
-    publicKey: snowflake;
+    applicationId: Snowflake;
+    publicKey: Snowflake;
     authToken: string;
     tokenPrefix?: string;
   }) {

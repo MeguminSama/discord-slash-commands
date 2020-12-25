@@ -1,9 +1,9 @@
-import { snowflake } from "./Snowflake";
+import { Snowflake } from "./Snowflake";
 
 export type AllowedMentions = {
   parse: AllowedMentions[];
-  roles: snowflake[];
-  users: snowflake[];
+  roles: Snowflake[];
+  users: Snowflake[];
   repliedUser: boolean;
 };
 

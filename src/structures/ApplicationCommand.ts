@@ -1,9 +1,9 @@
 import { ApplicationCommandOption } from "./ApplicationCommandOptions";
-import { snowflake } from "./Snowflake";
+import { Snowflake } from "./Snowflake";
 
 export type ApplicationCommand = {
-  id: snowflake;
-  application_id: snowflake;
+  id: Snowflake;
+  application_id: Snowflake;
   name: string;
   description: string;
   options: ApplicationCommandOption[];

@@ -1,24 +1,24 @@
 import { ApplicationCommandInteractionData } from "./ApplicationCommandInteractionData";
 import { GuildMember } from "./GuildMember";
 import { InteractionType } from "./InteractionType";
-import { snowflake } from "./Snowflake";
+import { Snowflake } from "./Snowflake";
 
 type ApplicationCommand = {
-  id: snowflake;
+  id: Snowflake;
   type: InteractionType.APPLICATION_COMMAND;
   data: ApplicationCommandInteractionData;
-  guildId: snowflake;
-  channelId: snowflake;
+  guildId: Snowflake;
+  channelId: Snowflake;
   member: GuildMember;
   token: string;
 };
 
 export type Interaction = ApplicationCommand | {
-  id: snowflake;
+  id: Snowflake;
   type: Exclude<InteractionType, InteractionType.APPLICATION_COMMAND>;
   data?: ApplicationCommandInteractionData;
-  guild_id: snowflake;
-  channel_id: snowflake;
+  guild_id: Snowflake;
+  channel_id: Snowflake;
   member: GuildMember;
   token: string;
 };

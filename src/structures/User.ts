@@ -1,7 +1,7 @@
-import { snowflake } from "./Snowflake";
+import { Snowflake } from "./Snowflake";
 
 export type User = {
-  id: snowflake;
+  id: Snowflake;
   username: string;
   discriminator: string;
   avatar?: string;
