@@ -10,7 +10,7 @@
     "email": "megumin@megu.dev",
     "url": "https://github.com/MeguminSama"
   },
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "files": [
     "dist/**/*"
   ],
