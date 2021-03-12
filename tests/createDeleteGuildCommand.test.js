@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { DiscordInteractions, ApplicationCommandOptionType } = require('../dist')
+const { DiscordInteractions, ApplicationCommandOptionType } = require('..')
 
 const discord = new DiscordInteractions({
   applicationId: process.env.TESTS_APPID,
