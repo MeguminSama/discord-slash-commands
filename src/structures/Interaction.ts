@@ -3,7 +3,7 @@ import { GuildMember } from "./GuildMember";
 import { InteractionType } from "./InteractionType";
 import { Snowflake } from "./Snowflake";
 
-type ApplicationCommand = {
+export type ApplicationCommandInteraction = {
   id: Snowflake;
   type: InteractionType.APPLICATION_COMMAND;
   data: ApplicationCommandInteractionData;
@@ -13,7 +13,7 @@ type ApplicationCommand = {
   token: string;
 };
 
-export type Interaction = ApplicationCommand | {
+export type Interaction = ApplicationCommandInteraction | {
   id: Snowflake;
   type: Exclude<InteractionType, InteractionType.APPLICATION_COMMAND>;
   data?: ApplicationCommandInteractionData;

@@ -4,7 +4,7 @@ const {
   ApplicationCommandOptionType,
   SubcommandBuilder,
   SubcommandGroupBuilder
-} = require('../dist')
+} = require('..')
 
 describe('Create Commands with CommandBuilders', () => {
   test('CommandBuilder returns Object', () => {
