@@ -140,6 +140,12 @@ await interaction
   .catch(console.error);
 ```
 
+## Disclaimer
+
+The slash command API is incomplete, so this library is likely to have breaking changes on non-major releases.
+
+Once the slash command API is stable, we will bump the project to v2.0.0.
+
 ## Contributing
 
 Help is much-needed to improve the library and add all features. Please feel free to make a PR to [the repository](https://github.com/MeguminSama/discord-slash-commands).
