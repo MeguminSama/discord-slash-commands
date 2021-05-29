@@ -14,3 +14,4 @@ export * from "./InteractionType";
 export * from "./MessageFlags";
 export * from "./Snowflake";
 export * from "./User";
+export * from "./components";
