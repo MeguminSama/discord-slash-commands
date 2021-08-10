@@ -1,5 +1,5 @@
 import {
-    ApplicationCommandTypes,
+    	ApplicationCommandTypes,
 	ApplicationCommandOption,
 	ApplicationCommandOptionChoice,
 	ApplicationCommandOptionType,
@@ -10,11 +10,11 @@ export class CommandBuilder {
 	private name: string;
 	private description: string;
 	private options: ApplicationCommandOption[];
-    private type: ApplicationCommandTypes;
+    	private type: ApplicationCommandTypes;
 
 	constructor() {
 		this.options = [];
-        this.type = 1;
+        	this.type = 1;
 	}
 
 	public setName(name: string): CommandBuilder {
@@ -26,12 +26,12 @@ export class CommandBuilder {
 	}
 
 	public setDescription(description: string): CommandBuilder {
-        // User and Message commands (Context Menu commands) does not support descriptions
-        if (this.type !== 1) {
-            throw new Error(
-                "A context menu command cannot have a description"
-            );
-        }
+		// User and Message commands (Context Menu commands) does not support descriptions
+		if (this.type !== 1) {
+		    throw new Error(
+			"A context menu command cannot have a description"
+		    );
+		}
 
 		if (description.length < 1 || description.length > 100) {
 			throw new Error(
@@ -41,11 +41,11 @@ export class CommandBuilder {
 		this.description = description;
 		return this;
 	}
-
-    public setType(type: ApplicationCommandTypes): CommandBuilder {
-        this.type = type;
-        return this;
-    }
+	
+	public setType(type: ApplicationCommandTypes): CommandBuilder {
+		this.type = type;
+		return this;
+	}
 
 	public addOption(option: ApplicationCommandOption): CommandBuilder {
 		this.options.push(option);
@@ -57,7 +57,7 @@ export class CommandBuilder {
 			name: this.name,
 			description: this.description,
 			options: this.options,
-            type: this.type,
+            		type: this.type,
 		};
 	}
 }
